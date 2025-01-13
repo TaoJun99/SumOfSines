@@ -10,12 +10,16 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+#include "Camera.h"
 
 // Global variables for VAO, VBO, shaders, etc.
 GLuint waterVAO, waterVBO, waterEBO, skyboxVAO, skyboxVBO, skyboxShader, waterShader;
 //GLuint projectionLoc, viewLoc, modelLoc, timeLoc, lightPosLoc, lightAmbientLoc, lightDiffuseLoc, lightSpecularLoc;
 glm::mat4 projection, view;
 glm::vec3 cameraPos = glm::vec3(0.0f, 1.0f, 2.5f);
+float cameraWidth = 800.0f;
+float cameraHeight = 600.0f;
+Camera camera(cameraWidth, cameraHeight, cameraPos);
 int waterPlaneIndexCount;
 GLuint skyBoxtid;
 
@@ -24,7 +28,7 @@ GLuint skyBoxtid;
 const GLfloat lightAmbient[] = { 0.1f, 0.2f, 0.3f, 1.0f };
 const GLfloat lightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 const GLfloat lightSpecular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-const GLfloat lightPosition[4] = { -15.0f, 50.0f, -15.0f, 0.0f }; // Given in eye space
+const GLfloat lightPosition[4] = { -15.0f, 500.0f, -15.0f, 0.0f }; // Given in eye space
 
 // Function to read shader source from file
 std::string readShaderSource(const std::string& filePath) {
@@ -396,17 +400,20 @@ int main() {
 
 
     // Matrices
-//    cameraPos = glm::vec3(0.0f, 1.0f, 2.5f);
     glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, -5.0f);
     glm::vec3 upVector = glm::vec3(0.0f, 1.0f, 0.0f);
-    view = glm::lookAt(cameraPos, cameraTarget, upVector);
-
-    projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-
+//    view = glm::lookAt(cameraPos, cameraTarget, upVector);
+//    view = camera.getViewMatrix();
+//    projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+//    projection = camera.getProjMatrix(70.0f, 0.1f, 100.0f);
     // Main render loop
     while (!glfwWindowShouldClose(window)) {
         // Clear screen and depth buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        camera.Inputs(window);
+        view = camera.getViewMatrix();
+        projection = camera.getProjMatrix(70.0f, 0.1f, 100.0f);
 
         // Use shader program and bind VAO
         glDisable(GL_DEPTH_TEST);
