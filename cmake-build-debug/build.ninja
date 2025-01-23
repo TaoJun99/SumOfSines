@@ -56,6 +56,13 @@ build CMakeFiles/Test.dir/main.cpp.o: CXX_COMPILER__Test_unscanned_Debug /Users/
   OBJECT_DIR = CMakeFiles/Test.dir
   OBJECT_FILE_DIR = CMakeFiles/Test.dir
 
+build CMakeFiles/Test.dir/Camera.cpp.o: CXX_COMPILER__Test_unscanned_Debug /Users/zhengtaojun/Desktop/NUS/XFC4101/Test/Camera.cpp || cmake_object_order_depends_target_Test
+  DEP_FILE = CMakeFiles/Test.dir/Camera.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode_13.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -fcolor-diagnostics -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks
+  INCLUDES = -I/opt/homebrew/lib -I/Users/zhengtaojun/Desktop/NUS/XFC4101/Test/include -isystem /opt/homebrew/include
+  OBJECT_DIR = CMakeFiles/Test.dir
+  OBJECT_FILE_DIR = CMakeFiles/Test.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Test
@@ -64,7 +71,7 @@ build CMakeFiles/Test.dir/main.cpp.o: CXX_COMPILER__Test_unscanned_Debug /Users/
 #############################################
 # Link the executable Test
 
-build Test: CXX_EXECUTABLE_LINKER__Test_Debug CMakeFiles/Test.dir/main.cpp.o | /opt/homebrew/lib/libglfw.3.3.dylib /opt/homebrew/lib/libGLEW.2.2.0.dylib
+build Test: CXX_EXECUTABLE_LINKER__Test_Debug CMakeFiles/Test.dir/main.cpp.o CMakeFiles/Test.dir/Camera.cpp.o | /opt/homebrew/lib/libglfw.3.3.dylib /opt/homebrew/lib/libGLEW.2.2.0.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode_13.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
   LINK_LIBRARIES = -Wl,-rpath,/Users/zhengtaojun/Desktop/NUS/XFC4101/Test/include -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libglfw.3.3.dylib  /opt/homebrew/lib/libGLEW.2.2.0.dylib  -Xlinker -framework -Xlinker OpenGL
   LINK_PATH = -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks  -L/Users/zhengtaojun/Desktop/NUS/XFC4101/Test/include

@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 file(GLOB SOURCE_FILES  main.cpp shader.frag shader.vert)
 
-add_executable(Test main.cpp)
+add_executable(Test main.cpp
+        Camera.cpp
+        Camera.h)
 
 find_package(glfw3 REQUIRED)
 target_link_libraries(Test PRIVATE glfw)
